@@ -1,0 +1,78 @@
+<section class="section-tambahan">
+    <div class="sttext">
+    </div>
+    <div class="slider">
+        <img src="/images/gambar-sepatu.png" alt="Gambar Sepatu" class="gs1">
+        <img src="/images/gambar-sepatu2.png" alt="Gambar Sepatu 2" class="gs2">
+        <img src="/images/gambar-sepatu3.png" alt="Gambar Sepatu 3" class="gs3">
+    </div>
+</section>
+
+<!-- Link ke GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Ambil semua gambar dalam slider
+        const images = document.querySelectorAll('.slider img');
+        const totalImages = images.length;
+        let currentIndex = 0;
+
+        // Fungsi untuk mengupdate z-index setiap gambar
+        function updateZIndex() {
+            images.forEach((image, index) => {
+                if (index === currentIndex) {
+                    // Gambar yang aktif (di tengah) akan memiliki z-index tertinggi
+                    gsap.set(image, { zIndex: 2 });
+                } else {
+                    // Gambar lainnya akan memiliki z-index lebih rendah
+                    gsap.set(image, { zIndex: 1 });
+                }
+            });
+        }
+
+        // Fungsi untuk mengganti gambar (geser ke kiri, hilang, dan muncul dari kanan)
+        function changeImage() {
+            const currentImage = images[currentIndex];
+            const nextIndex = (currentIndex + 1) % totalImages; // Mendapatkan index gambar selanjutnya
+            const nextImage = images[nextIndex];
+
+            // Animasikan gambar saat ini untuk bergeser ke kiri dan hilang
+            gsap.to(currentImage, {
+                x: '-100%', // Geser ke kiri
+                opacity: 0,  // Hilang
+                duration: 1.5,  // Durasi animasi
+                ease: 'power2.inOut', // Transisi halus
+                onComplete: () => {
+                    // Setelah gambar saat ini selesai bergerak keluar, atur posisinya ke kanan
+                    gsap.set(currentImage, { x: '100%', opacity: 0 });
+                }
+            });
+
+            // Animasikan gambar selanjutnya untuk muncul dari kanan dan bergerak ke tengah
+            gsap.fromTo(nextImage, {
+                x: '100%',  // Mulai dari kanan
+                opacity: 0   // Mulai dengan opacity 0 (tidak terlihat)
+            }, {
+                x: '0%',     // Geser ke posisi tengah
+                opacity: 1,  // Menjadi terlihat
+                duration: 1.5,  // Durasi animasi
+                ease: 'power2.inOut' // Transisi halus
+            });
+
+            // Update index gambar saat ini ke gambar selanjutnya
+            currentIndex = nextIndex;
+
+            // Update z-index untuk memastikan gambar yang ada di tengah memiliki lapisan teratas
+            updateZIndex();
+        }
+
+        // Mulai loop animasi: ganti gambar setiap 3 detik
+        setInterval(changeImage, 3000);
+
+        // Posisi awal gambar: gambar pertama berada di tengah
+        gsap.set(images[currentIndex], { x: '0%', opacity: 1, zIndex: 2 });
+        gsap.set(images[(currentIndex + 1) % totalImages], { x: '100%', opacity: 0, zIndex: 1 });
+        gsap.set(images[(currentIndex - 1 + totalImages) % totalImages], { x: '-100%', opacity: 0, zIndex: 1 });
+    });
+</script>

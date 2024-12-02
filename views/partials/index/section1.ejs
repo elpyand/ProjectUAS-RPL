@@ -1,0 +1,41 @@
+<section class="section1">
+    <div class="sc1-text">
+        <h2>Solusi Untuk <span class="highlight">Sepatu Kotormu</span></h2>
+        <p>Jadikan sepatu Anda tampil sempurna kembali dengan layanan laundry sepatu kami. Kami berkomitmen untuk memberikan layanan yang ramah, cepat, dan menjaga sepatu Anda agar tetap awet dan nyaman.</p>
+        <a href="/reservasi" class="btnCuciSekarang">Cuci Sekarang</a>
+    </div>
+
+    <img src="/images/bgapawe.png" alt="Sepatu" class="bgSepatu" >
+    <img src="/images/bg-st.png" alt="" class="txt-st">
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    
+    gsap.from(".sc1-text h2", {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+    });
+
+    gsap.from(".sc1-text p", {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        delay: 0.5,
+    });
+
+    gsap.from(".btnCuciSekarang", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        delay: 1,
+    });
+
+    gsap.from(".bgSepatu", {
+        opacity: 0,
+        x: 50,
+        duration: 1.5,
+        delay: 0.5,
+    });
+</script>

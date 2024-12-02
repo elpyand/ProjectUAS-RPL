@@ -1,0 +1,22 @@
+<section class="services" id="servicespage">
+    <div class="title">Our Services</div>
+    <div class="service-container">
+        <% services.filter(service => service.id_services === 1).forEach(service => { %>
+            <a href="/reservasi" class="service" data-aos="fade-up" data-aos-duration="1000">
+                <img src='/images/fast_clean.png' alt="">
+                <h3><%= service.nama_layanan %></h3>
+                <p><%= service.deskripsi %></p>
+                <p><%= service.harga %></p>
+            </a>
+        <% }); %>
+
+        <% services.filter(service => service.id_services === 2).forEach(service => { %>
+            <a href="/reservasi" class="service" data-aos="fade-up" data-aos-duration="1000">
+                <img src='/images/deep_clean.png' alt="">
+                <h3><%= service.nama_layanan %></h3>
+                <p><%= service.deskripsi %></p>
+                <p class="harga"><%= service.harga %></p>
+            </a>
+        <% }); %>
+    </div>
+</section>
