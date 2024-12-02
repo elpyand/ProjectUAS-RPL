@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body class="body-pesanan">
+    <header class="black-header"><%- include('partials/header') %></header>
+
+    <section class="content-pesanansaya">
+      <h1>Daftar Pesanan Anda</h1>
+      <div class="orders-container">
+        <% if (orders.length > 0) { %> <% orders.forEach(order => { %>
+        <div class="order-box" data-id="<%= order.id_reservasi %>">
+          <div class="order-item">
+            <h1><%= order.nama_layanan %></h1>
+          </div>
+          <div class="order-bawah">
+            <div class="order-item">
+              <p><%= order.nama_customer %></p>
+            </div>
+            <div class="order-item">
+              <p><%= order.nomor_telepon %></p>
+            </div>
+            <div class="order-item">
+              <p><%= order.nama_layanan %></p>
+            </div>
+            <div class="order-item">
+              <p class="status"><%= order.status_pesanan %></p>
+            </div>
+          </div>
+          
+        </div>
+        <% }) %> <% } else { %>
+        <div class="no-orders">
+          <p>Anda belum memiliki pesanan.</p>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hapus pesanan yang statusnya "selesai" saat halaman dimuat
+        const orders = document.querySelectorAll(".order-box");
+        orders.forEach((order) => {
+          const statusElement = order.querySelector(".status");
+          if (
+            statusElement &&
+            statusElement.textContent.trim().toLowerCase() === "selesai"
+          ) {
+            order.remove(); // Hapus pesanan yang statusnya selesai
+          }
+        });
+      });
+
+      const socket = io();
+
+      // Ketika event statusUpdated diterima, perbarui status di UI
+      socket.on("statusUpdated", (data) => {
+        // Cari elemen yang terkait dengan ID pesanan yang diterima
+        const orderItem = document.querySelector(
+          `.order-box[data-id="${data.id_reservasi}"]`
+        );
+        if (orderItem) {
+          const statusElement = orderItem.querySelector(".status");
+          statusElement.innerHTML = data.status; // Update status
+
+          // Jika status "selesai", hapus pesanan
+          if (data.status.toLowerCase() === "selesai") {
+            orderItem.remove(); // Hapus pesanan yang statusnya selesai
+          }
+        }
+      });
+
+      
+    </script>
+  </body>
+</html>

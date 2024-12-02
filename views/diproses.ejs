@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <%- include('partials/head-admin')  %>
+</head>
+<body>
+    <header>
+        <%- include('partials/header-admin')  %>
+    </header>
+
+    <div class="container-diproses">        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Reservasi</th>
+                    <th>Nama Customer</th>
+                    <th>Nomor Telepon</th>
+                    <th>Tanggal Reservasi</th>
+                    <th>Jenis Layanan</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.id_reservasi %></td>
+                        <td><%= order.nama_customer %></td>
+                        <td><%= order.nomor_telepon %></td>
+                        <td><%= order.tanggal_reservasi %></td>
+                        <td><%= order.id_services %></td>
+                        <td><%= order.harga %></td>
+                        <td>
+                            <!-- Button untuk mengubah status menjadi Selesai -->
+                            <form action="/selesai/<%= order.id_reservasi %>" method="POST">
+                                <button type="submit">Selesai</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/script.js"></script> <!-- Sesuaikan dengan file JavaScript kamu -->
+</body>
+</html>

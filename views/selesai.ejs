@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('partials/head-admin')  %>
+</head>
+<header>
+    <%- include('partials/header-admin') %>
+</header>
+<body>
+    <div class="container-selesai">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Reservasi</th>
+                    <th>Nama Customer</th>
+                    <th>Nomor Telepon</th>
+                    <th>Tanggal Reservasi</th>
+                    <th>Jenis Layanan</th>
+                    <th>Harga</th>
+                    <th>Status Pesanan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.id_reservasi %></td>
+                        <td><%= order.nama_customer %></td>
+                        <td><%= order.nomor_telepon %></td>
+                        <td><%= order.tanggal_reservasi %></td>
+                        <td><%= order.id_services %></td> <!-- Menampilkan id layanan -->
+                        <td><%= order.harga %></td>
+                        <td><%= order.status_pesanan %></td> <!-- Menampilkan status pesanan -->
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

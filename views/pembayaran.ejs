@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <%- include('partials/head')  %>
+</head>
+
+<header>
+    <%- include('partials/header')  %>
+</header>
+<body>
+    <section>
+        <%- include('partials/payment', { id_reservasi: id_reservasi }) %>
+    </section>
+
+    <footer>
+        <%- include('partials/footer')  %>
+    </footer>
+
+    <script>
+        const timerDuration = 600; // 10 menit dalam detik
+        const currentTime = Math.floor(Date.now() / 1000); // Waktu saat ini dalam detik
+        let endTime = localStorage.getItem("paymentEndTime");
+    
+        // Jika belum ada waktu akhir di localStorage, set sekarang + 10 menit
+        if (!endTime) {
+            endTime = currentTime + timerDuration;
+            localStorage.setItem("paymentEndTime", endTime);
+        }
+    
+        // Validasi apakah waktu sudah habis
+        if (currentTime >= endTime) {
+            localStorage.removeItem("paymentEndTime"); // Hapus data setelah waktu habis
+            alert("Pembayaran gagal karena waktu habis.");
+            window.location.href = "/"; // Redirect ke halaman utama
+        }
+    
+        // Mulai hitung mundur
+        const countdown = setInterval(() => {
+            const remainingTime = endTime - Math.floor(Date.now() / 1000);
+    
+            if (remainingTime <= 0) {
+                clearInterval(countdown);
+                localStorage.removeItem("paymentEndTime"); // Hapus data setelah waktu habis
+                alert("Pembayaran gagal karena waktu habis.");
+                window.location.href = "/"; // Redirect ke halaman utama
+            } else {
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                document.getElementById("countdown-timer").textContent = 
+                    `Waktu tersisa: ${minutes}:${seconds.toString().padStart(2, "0")}`;
+            }
+        }, 1000);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Dapatkan waktu saat ini dalam detik
+            const currentTime = Math.floor(Date.now() / 1000); 
+            const paymentEndTime = currentTime + 600; // 10 menit setelah halaman dimuat
+
+            // Simpan waktu pembayaran ke localStorage
+            localStorage.setItem("paymentEndTime", paymentEndTime);
+            console.log("Payment end time set to:", paymentEndTime); // Log untuk debug
+        });
+
+        // Ketika form dikirimkan, tambahkan waktu pembayaran ke form
+        document.querySelector("form").addEventListener("submit", function(event) {
+            const paymentEndTime = localStorage.getItem("paymentEndTime");
+
+            // Cek apakah waktu pembayaran ada
+            if (!paymentEndTime) {
+                event.preventDefault(); // Jangan kirim form jika waktu tidak ada
+                alert('Tidak ada waktu pembayaran yang ditemukan.');
+                return;
+            }
+
+            // Pastikan waktu belum habis
+            const currentTime = Math.floor(Date.now() / 1000); 
+            console.log("Current time:", currentTime); // Log untuk debug
+            console.log("Payment end time from localStorage:", paymentEndTime); // Log untuk debug
+
+            if (currentTime >= paymentEndTime) {
+                event.preventDefault(); // Jangan kirim form jika waktu habis
+                alert('Waktu pembayaran telah habis. Pembayaran gagal.');
+                window.location.href = '/'; // Redirect ke halaman utama
+            } else {
+                // Setel nilai hidden input dengan waktu pembayaran
+                document.getElementById("paymentEndTime").value = paymentEndTime;
+                console.log("Payment time is valid, form submitted"); // Log untuk debug
+            }
+        });
+    </script>
+    
+    
+    
+</body>
+</html>

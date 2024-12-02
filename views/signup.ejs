@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/login-signup.css">
+    <!-- Tambahkan GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="pic-container">
+            <img src="/images/bg-login1.png" alt="" class="bg-login1">
+            <div class="circle-container">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+                <div class="circle-3"></div>
+            </div>
+            <img src="/images/sepatu-login.png" alt="" class="sepatu-login">
+        </div>
+        <div class="form-container">
+            <form action="/signup" method="POST" class="login-form">
+                <h2>Sign Up</h2>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="/login">Login here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- GSAP Animation -->
+    <script>
+        // Animasi untuk background gambar
+        gsap.from(".bg-login1", {
+            opacity: 0,
+            scale: 1.2,
+            duration: 1
+        });
+
+        // Animasi untuk lingkaran
+        gsap.from(".circle-1", {
+            opacity: 0,
+            scale: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+        gsap.from(".circle-2", {
+            opacity: 0,
+            scale: 0,
+            duration: 1,
+            delay: 0.7
+        });
+
+        gsap.from(".circle-3", {
+            opacity: 0,
+            scale: 0,
+            duration: 1,
+            delay: 0.9
+        });
+
+        // Animasi untuk gambar sepatu
+        gsap.from(".sepatu-login", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 1.2
+        });
+
+        // Animasi untuk form sign up
+        gsap.from(".login-form", {
+            opacity: 0,
+            x: 50,
+            duration: 1,
+            delay: 1.5
+        });
+    </script>
+</body>
+</html>
