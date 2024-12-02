@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-pesanan {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.3px;
+    padding-top: 100px;
+    background-color: #f4f4f9;
+}
+
+.content-pesanansaya {
+    margin: 20px 50px;
+    padding: 20px;
+}
+
+.content-pesanansaya h1 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-box {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Smoother, softer shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow effect */
+    flex-direction: column;
+    height: auto; 
+}
+
+.order-bawah {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-box:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Darker shadow on hover */
+}
+
+.order-item {
+    width: 100%;  /* Pastikan item menempati 100% lebar dari order-box */
+    padding: 5px 10px;  /* Kurangi padding agar lebih rapat */
+    margin: 0;  /* Hapus margin yang tidak perlu */
+    height: auto;  /* Biarkan elemen menyesuaikan dengan konten */
+}
+.order-item h1 {
+    margin: 0;
+}
+.order-item strong {
+    display: block;
+    font-size: 16px;
+    color: #333;
+}
+
+.order-item p {
+    font-size: 10px;
+    color: #555;
+}
+
+.no-orders {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+    .orders-container {
+        margin: 20px;
+        padding: 10px;
+    }
+
+    .order-box {
+        flex-direction: column;
+    }
+
+    .order-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.black-header nav .menu a,
+.black-header nav .logo a {
+    color: rgb(0, 0, 0);
+}
+
+.black-header nav .auth a {
+    background-color: #0EA4F0;
+    color: black;
+}
+
+.black-header {
+    background-color: black;
+    color: white;
+}
+
