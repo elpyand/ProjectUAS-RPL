@@ -1,0 +1,105 @@
+/* Styling untuk section2 */
+.section2 {
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    height: 600px;
+    background-color: #101010;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row; /* Default: Gambar dan teks sejajar */
+}
+
+/* Gambar di about section */
+.gambarabout {
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    left: 84px;
+}
+
+.sepatu2 {
+    position: relative;
+    z-index: 2;
+    width: 273px;
+    height: auto;
+    border-radius: 15px;
+}
+
+.sepatu3 {
+    position: absolute;
+    z-index: 1;
+    width: 225px;
+    height: auto;
+    border-radius: 15px;
+    left: 180px;
+    top: 35px;
+}
+
+/* Teks di about section */
+.abouttext {
+    position: relative;
+    right: 84px;
+    max-width: 500px;
+    color: white;
+    text-align: left;
+}
+
+.txtAbout {
+    font-size: 64px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.paragAbout {
+    font-size: 12px;
+    font-weight: medium;
+    padding: 20px;
+}
+
+/* Responsif untuk tampilan layar kecil (max-width: 768px) */
+@media (max-width: 768px) {
+    .section2 {
+        flex-direction: column; /* Gambar dan teks menjadi vertikal */
+        height: auto; /* Sesuaikan tinggi dengan konten */
+        padding: 20px; /* Memberikan padding agar konten tidak terlalu menempel */
+    }
+
+    .gambarabout {
+        left: 0;
+        text-align: center;
+        margin-bottom: 20px; /* Memberikan jarak antara gambar dan teks */
+    }
+
+    .sepatu2 {
+        width: 30%; /* Mengurangi ukuran gambar pada perangkat mobile */
+    }
+
+    .sepatu3 {
+        width: 20%; /* Mengurangi ukuran gambar pada perangkat mobile */
+        left: 50%; /* Posisikan gambar di tengah */
+        top: 20px; /* Sesuaikan posisi gambar agar tidak bertumpuk */
+    }
+
+    .abouttext {
+        position: relative;
+        right: 0;
+        text-align: center; /* Menyusun teks di tengah pada layar kecil */
+        padding: 0 20px; /* Memberikan sedikit jarak kiri dan kanan */
+        max-width: 100%;
+    }
+
+    .txtAbout {
+        font-size: 32px; /* Menyesuaikan ukuran font pada tampilan kecil */
+        padding: 10px;
+    }
+
+    .paragAbout {
+        font-size: 10px; /* Menyesuaikan ukuran font pada tampilan kecil */
+        padding: 10px;
+    }
+}

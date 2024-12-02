@@ -1,0 +1,172 @@
+.section3 {
+    width: 100%;
+    height: 1000px;
+    background-color: #F6F6F6;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+ }
+ 
+ .sec3text {
+    margin-left: 84px;
+    margin-right: 100px;
+    
+ 
+ }
+ 
+ .headlinesc3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+ }
+ 
+ .paragsc3 {
+    font-size: 12px;
+ 
+ }
+ 
+ .bagaimanatext {
+    max-width: 100%;
+    margin-right: 84px;
+    
+ }
+ 
+ .bagaimana1 {
+    background-color: white;
+    border-radius: 10px;
+    width: 546px;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom:20px;
+ 
+ }
+ 
+ .bagaimana2 {
+    background-color: white;
+    border-radius: 10px;
+    width: 546px;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom:20px;
+ 
+ }
+ 
+ .bagaimana3 {
+    background-color: white;
+    border-radius: 10px;
+    width: 546px;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom:20px;
+ }
+ 
+ .bagaimana4 {
+    background-color: white;
+    border-radius: 10px;
+    width: 546px;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom:20px;
+ }
+
+ .bagaimana1:hover{
+    transform: scale(1.1);
+ }
+ 
+ .nomor {
+    height: 36px;
+    width: 36px;
+    border-radius: 100px;
+    background-color: #B3F97D;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+ }
+ 
+ .nomor {
+    font-size: 24px;
+ }
+ 
+ .judul {
+    font-size: 18px;
+    margin-bottom: 10px ;
+ }
+ 
+ .paragbagaimana {
+    font-size: 12px;
+    max-width: 500px;
+    height: auto;
+ }
+ @media (max-width: 768px) {
+    .section3 {
+        display: flex; /* Gunakan flexbox */
+        flex-direction: column; /* Susun elemen secara vertikal */
+        align-items: center; /* Pusatkan elemen secara horizontal */
+        justify-content: flex-start; /* Mulai dari atas */
+        padding: 20px; /* Tambahkan padding untuk ruang */
+        gap: 40px; /* Tambahkan jarak antar elemen */
+        height: auto;
+    }
+
+    .sec3text {
+        text-align: center; /* Pusatkan teks */
+        margin: 0; /* Hilangkan margin samping */
+        padding: 0 10px; /* Beri padding kecil untuk teks */
+    }
+
+    .bagaimanatext {
+        display: flex; /* Gunakan flexbox */
+        flex-direction: column; /* Susun elemen secara vertikal */
+        gap: 20px; /* Tambahkan jarak antar elemen */
+        width: 100%; /* Gunakan seluruh lebar yang tersedia */
+        max-width: 500px; /* Berikan batas maksimal lebar */
+        margin: 20px 84px;
+    }
+
+    .bagaimana1, .bagaimana2, .bagaimana3, .bagaimana4 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%; /* Gunakan seluruh lebar kontainer */
+        height: auto; /* Tinggi otomatis sesuai konten */
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan untuk elemen */
+        transition: transform 0.3s ease, background-color 0.3s ease; /* Transisi halus */
+        text-align: center;
+    }
+
+    .bagaimana1:hover, .bagaimana2:hover, .bagaimana3:hover, .bagaimana4:hover {
+        background-color: #B3F97D; /* Warna saat hover */
+        transform: scale(1.5); /* Efek zoom */
+    }
+
+    .judul {
+        font-size: 16px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .paragbagaimana {
+        font-size: 12px;
+        margin-top: 10px;
+        opacity: 0; /* Tersembunyi secara default */
+        visibility: hidden; /* Tersembunyi secara default */
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .bagaimana1:hover .paragbagaimana,
+    .bagaimana2:hover .paragbagaimana,
+    .bagaimana3:hover .paragbagaimana,
+    .bagaimana4:hover .paragbagaimana {
+        opacity: 1;
+        visibility: visible;
+    }
+}

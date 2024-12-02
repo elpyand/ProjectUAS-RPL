@@ -1,0 +1,62 @@
+.services {
+    text-align: center;
+    height: 700px;
+    width: 100%;
+    position: relative; /* Menambahkan relative agar elemen-elemen di dalamnya tetap dalam konteks section */
+    z-index: 10;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center; /* Memastikan kedua service berada di tengah */
+    gap: 20px; /* Memberi jarak antar service */
+    margin-top: 50px;
+}
+
+.service {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+    text-decoration: none;
+}
+
+.service:hover{
+    transform: scale(5.0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 80px;
+}
+
+.harga {
+    color: black;
+}
+.service h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
