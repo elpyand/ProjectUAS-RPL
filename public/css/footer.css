@@ -1,0 +1,77 @@
+.footer {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+    color: white;
+    padding: 40px 20px; /* Padding kanan dan kiri diatur menjadi 84px */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+  }
+  
+  .content-footer {
+    width: 100%;
+    max-width: calc(100% - 168px); /* Sesuaikan lebar maksimum dengan margin total */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Supaya elemen turun jika layar kecil */
+  }
+  
+  .content-footer h1 {
+    color: white;
+  }
+
+  .footer-about{
+    max-width: 300px;
+  }
+  .footer-services,
+  .footer-contact,
+  .footer-follow {
+    flex: 1; /* Agar setiap kolom memiliki lebar yang sama */
+    max-width: 190px;
+  }
+
+  .footer-follow {
+    align-items: flex-end;
+  }
+  
+  .footer h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .footer p,
+  .footer img {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-follow .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .footer-follow i {
+    width: 32px; /* Ukuran ikon media sosial */
+    height: 32px;
+  }
+  
+  /* Responsif */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 20px; /* Kurangi padding untuk layar kecil */
+    }
+  
+    .content-footer {
+      flex-direction: column; /* Kolom menjadi vertikal pada layar kecil */
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-about,
+    .footer-services,
+    .footer-contact,
+    .footer-follow {
+      margin-bottom: 20px;
+    }
+  }
+  

@@ -1,0 +1,239 @@
+/* Styling untuk header dan navbar */
+header {
+    display: flex;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 70px; /* Tinggi navbar */
+    background-color: transparent;
+    z-index: 1000;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 100px;
+    transition: margin-top 0.3s, color 0.3s;
+    margin-left: 5%;
+}
+
+/* Logo di kiri */
+nav .logo {
+    flex: 0 0 auto; /* Tidak fleksibel */
+    margin-left: 84px; /* Menambahkan sedikit jarak dari sisi kiri */
+}
+
+/* Menu navigasi di tengah */
+nav .menu {
+    display: flex;
+    justify-content: center;
+    flex: 1; /* Membuat menu mengambil ruang yang tersisa */
+    gap: 2em;
+    justify-content: center; /* Memastikan menu tetap di tengah */
+}
+
+/* Link di bagian menu navbar */
+nav .menu a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+/* Logo */
+nav .logo a {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f0f0f0;
+    text-decoration: none;
+    margin-left: 0; /* Menghilangkan margin-left pada logo untuk pemusatan */
+}
+
+/* Tombol Login/Register di kanan */
+nav .auth {
+    margin-right: 84px;
+}
+
+nav .auth a {
+    color: white;
+    text-decoration: none;
+    background-color: #0EA4F0;
+    padding: 0.5em 1em;
+    font-size: 13px;
+    border-radius: 25px;
+}
+
+/* Ketika navbar discroll */
+nav.nav-scrolled {
+    background-color: rgb(255, 255, 255) !important;
+    color: black !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+/* Mengubah warna menu dan logo saat navbar scroll */
+nav.nav-scrolled .menu a,
+nav.nav-scrolled .logo a {
+    color: black !important;
+}
+
+/* Mengubah tombol login saat navbar scroll */
+nav.nav-scrolled .auth a {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    transition: 0.3s;
+    z-index: 999;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #ddd;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Hamburger icon for mobile */
+.hamburger {
+    display: none; /* Awalnya disembunyikan */
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+    margin-left: 20px; /* Memberikan jarak dari sisi kiri */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+
+    header {
+        padding-top: 20px; /* Adjust this value to add space above the header */
+    }
+
+    nav .menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+        margin-right: 20px;
+    }
+
+    nav .logo {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .auth {
+        margin-right: 0;
+        display: none;
+    }
+    
+    /* Show the sidebar on mobile */
+    .sidebar.open {
+        left: 0;
+    }
+
+}
+
+
+/* Dropdown container */
+.menu .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown trigger button */
+.menu .dropbtn {
+    cursor: pointer;
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 16px;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Dropdown content (hidden by default) */
+.menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Links inside the dropdown */
+.menu .dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+/* Hover effect for dropdown links */
+.menu .dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Show dropdown menu on hover */
+.menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Sidebar dropdown (for mobile) */
+.sidebar .dropdown {
+    display: block;
+}
+
+.sidebar .dropdown-content {
+    position: static; /* Adjust for sidebar */
+    box-shadow: none;
+    padding-left: 20px;
+}
+
+/* Sidebar dropdown links */
+.sidebar .dropdown-content a {
+    font-size: 18px;
+    padding: 8px 0;
+}

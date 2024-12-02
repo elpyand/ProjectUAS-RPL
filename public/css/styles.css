@@ -1,0 +1,41 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   /* Memudahkan dalam pengaturan ukuran */
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+body {
+   font-family: 'Montserrat', sans-serif;
+   letter-spacing: 0.3px;
+   
+   /* Tambahkan padding untuk mencegah konten tertutup navbar */
+}
+
+/* Gaya untuk elemen utama */
+main {
+   max-width: 100%;
+   /* Lebar maksimum untuk konten */
+   overflow: hidden;
+
+}
+
+
+
+/* Ubah warna teks di halaman reservasi */
+.nav-reservasi .menu a,
+.nav-reservasi .logo a,
+.nav-reservasi .auth a {
+    color: white !important; /* Teks menjadi putih */
+    transition: color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.nav-reservasi .menu a:hover,
+.nav-reservasi .logo a:hover,
+.nav-reservasi .auth a:hover {
+    color: #ddd !important; /* Warna lebih terang saat hover */
+}

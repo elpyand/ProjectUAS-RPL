@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.pic-container {
+    flex: 0 0 45%;
+    background-color: #fff; /* Warna latar belakang untuk perbedaan visual */
+    position: relative;
+    perspective: 1000px;
+}
+
+.form-container {
+    flex: 1; /* Mengisi 50% */
+    background-color: #26292A;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+h2 {
+    text-align: start;
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #fff;
+}
+
+
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    color: #fff;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #0EA4F0;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px 80px;
+}
+
+button:hover {
+    background-color: #14648c;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+}
+
+a {
+    text-decoration: underline;
+    color: #0EA4F0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.login-form {
+    margin: 0px 155px;
+}
+
+.sepatu-login {
+    position: absolute;
+    width: 640px;
+    height: auto;
+    top: -30px;
+    left: 50px;
+    z-index: 1;
+    animation: shakeVertical 5s ease-in-out infinite; /* Apply the slow vertical shake animation */
+}
+
+/* Keyframes for vertical shaking (up and down) */
+@keyframes shakeVertical {
+    0% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    25% {
+        transform: translateY(-10px); /* Move up a little */
+    }
+    50% {
+        transform: translateY(10px); /* Move down a little */
+    }
+    75% {
+        transform: translateY(-10px); /* Move up again */
+    }
+    100% {
+        transform: translateY(0); /* Return to the original position */
+    }
+}
+
+
+.circle-container {
+    position: absolute;
+    width: 640px; /* Lebar sama dengan sepatu-login */
+    height: 640px; /* Tinggi sama dengan sepatu-login */
+    top: -20px; /* Sesuaikan dengan posisi sepatu-login */
+    left: 5px; /* Sesuaikan dengan posisi sepatu-login */
+    animation: rotateCircle 20s linear infinite; /* Animasi rotasi */
+}
+
+.circle-1,
+.circle-2,
+.circle-3 {
+    position: absolute;
+    border-radius: 50%;
+}
+.circle-1 {
+    background-color: #5A5A5A;
+    width: 190px;
+    height: 190px;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 10%);
+    filter: blur(px);
+}
+
+.circle-2 {
+    background-color: #D8D8D8;
+    width: 160px;
+    height: 160px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, 50%);
+    filter: blur(3px);
+}
+
+.circle-3 {
+    background-color: #26292A;
+    width: 190px;
+    height: 190px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%, -150%);
+    filter: blur(30px);
+}
+
+
+/* Animasi rotasi */
+@keyframes rotateCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.bg-login1 {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    filter: blur(25px);
+}
+
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Elemen ditumpuk secara vertikal */
+        height: 100vh;
+        width: 100%; /* Lebar penuh untuk layar kecil */
+    }
+
+    .pic-container {
+        display: none; /* Sembunyikan elemen gambar */
+    }
+
+    .form-container {
+        width: 100%; /* Form mengambil lebar penuh */
+        height: 100%; /* Form memenuhi tinggi layar */
+        padding: 20px;
+        margin: 0;
+    }
+
+    .signup-form,
+    .login-form {
+        width: 100%; /* Form mengambil lebar penuh */
+        margin: 0 20px;
+        position: relative;
+    }
+
+    .input-group {
+    display: flex;
+    flex-direction: column; /* Tumpuk elemen label dan input secara vertikal */
+    margin-bottom: 15px; /* Jarak antar kelompok input */
+    max-width: 400px;
+    justify-content: center;
+    }
+
+    label {
+        font-size: 14px; /* Ukuran font label */
+        margin-bottom: 5px; /* Jarak bawah antara label dan input */
+        color: #fff; /* Warna label tetap */
+    }
+
+    input {
+        font-size: 14px; /* Ukuran font input */
+        padding: 10px; /* Padding untuk input */
+        width: auto; /* Input memenuhi lebar kontainer */
+        border: 1px solid #fff; /* Warna border */
+        border-radius: 100px; /* Radius untuk sudut melingkar */
+        box-sizing: border-box; /* Pastikan padding termasuk dalam lebar total */
+    }
+
+
+    button {
+        width: 50%; /* Tombol mengambil lebar penuh */
+        margin: 10px 20%; /* Tambahkan margin vertikal */
+    }
+
+    h2 {
+        font-size: 28px; /* Kurangi ukuran heading */
+        text-align: center; /* Pusatkan teks heading */
+    }
+
+    p {
+        font-size: 14px; /* Ukuran teks lebih kecil */
+    }
+
+    .circle-container,
+    .sepatu-login,
+    .bg-login1 {
+        display: none; /* Sembunyikan elemen dekoratif */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    input {
+        font-size: 12px; /* Ukuran font lebih kecil */
+        padding: 6px; /* Padding lebih kecil */
+    }
+
+    h2 {
+        font-size: 24px; /* Heading lebih kecil */
+    }
+
+    button {
+        font-size: 14px; /* Ukuran font tombol lebih kecil */
+    }
+}
