@@ -1,0 +1,81 @@
+<header>
+    <nav id="mainNav">
+        <div class="logo">
+            <a href="/">MRCLEANSZ</a>
+        </div>
+        <div class="menu">
+            <a href="#about">About Us</a>
+            <div class="dropdown">
+                <a href="#servicespage" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="/pesanan-saya">Pesanan Saya</a>
+                </div>
+            </div>
+            <a href="#bagaimana">How It Works</a>
+        </div>
+        <div class="auth">
+            <% if (user) { %> 
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/login">Login/Register</a>
+            <% } %>
+        </div>
+        <!-- Hamburger icon -->
+        <div class="hamburger">&#9776;</div>
+    </nav>
+
+    <!-- Sidebar menu -->
+    <div class="sidebar">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <a href="#">About Us</a>
+        <div class="dropdown">
+            <a href="#servicespage" class="dropbtn">Services</a>
+            <div class="dropdown-content">
+                <a href="/pesanan-saya">Pesanan Saya</a>
+            </div>
+        </div>
+        <a href="#bagaimana">How It Works</a>
+        <% if (user) { %>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login/Register</a>
+        <% } %>
+    </div>
+</header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.querySelector("nav");
+        const hamburger = document.querySelector(".hamburger");
+        const sidebar = document.querySelector(".sidebar");
+        const closebtn = document.querySelector(".closebtn");
+
+        // Toggle sidebar visibility on hamburger click
+        hamburger.addEventListener("click", function() {
+            sidebar.classList.toggle("open"); // Add or remove 'open' class to show/hide sidebar
+        });
+
+        // Close sidebar when close button is clicked
+        closebtn.addEventListener("click", function() {
+            sidebar.classList.remove("open"); // Remove 'open' class to hide sidebar
+        });
+
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("nav-scrolled");
+            } else {
+                navbar.classList.remove("nav-scrolled");
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.getElementById("mainNav");
+    const isReservasiPage = window.location.pathname === "/reservasi";
+
+    if (isReservasiPage) {
+        nav.classList.add("nav-reservasi");
+    }
+    });
+    
+</script>

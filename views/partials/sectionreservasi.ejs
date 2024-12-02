@@ -1,0 +1,129 @@
+<section class="secreservasi">
+    <!-- Overlay Background -->
+    <div class="bgreservasi-overlay"></div>
+    
+    <!-- Container Reservasi -->
+    <div class="contentreservasi">
+        <div class="form-container">
+            <!-- Bagian Kiri: Form -->
+            <div class="left-reservasi">
+                <p>Jadikan sepatu Anda tampil sempurna kembali dengan layanan laundry sepatu kami. Kami berkomitmen untuk memberikan layanan yang ramah, cepat, dan menjaga sepatu Anda agar tetap awet dan nyaman.</p>
+                <form action="/submit-reservasi" method="post">
+                    <div class="form">
+                        <input type="text" id="nama" name="nama_customer" placeholder="Nama" required>
+                    </div>
+
+                    <div class="form">
+                        <input type="text" id="nomor" name="nomor_telepon" placeholder="Nomor telepon" required>
+                    </div>
+
+                    <div class="form">
+                        <input type="text" id="alamat" name="alamat" placeholder="Alamat" required>
+                    </div>
+
+                    <div class="form">
+                        <input type="date" id="tanggal" name="tanggal_reservasi" required>
+                    </div>
+
+                    <div class="form">
+                        <input type="text" id="catatan" name="catatan" placeholder="Catatan (Opsional)">
+                    </div>
+
+                    <div class="form">
+                        <select id="jenis_pengantaran" name="jenis_pengantaran" required>
+                            <option value="Di jemput">Di jemput</option>
+                            <option value="Datang ke tempat">Datang ke tempat</option>
+                        </select>
+                    </div>
+
+                    <div class="form">
+                        <select id="nama_layanan" name="nama_layanan" required>
+                            <% services.forEach(service => { %>
+                                <option value="<%= service.id_services %>" data-harga="<%= service.harga %>">
+                                    <%= service.nama_layanan %>
+                                </option>
+                            <% }); %>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Metode Pembayaran:</p>
+                        <label for="cod">
+                            <input type="radio" id="cod" name="jenis_pembayaran" value="COD" required>
+                            COD (Cash On Delivery)
+                        </label>
+                        <br>
+                        <label for="transfer">
+                            <input type="radio" id="transfer" name="jenis_pembayaran" value="Transfer" required>
+                            Transfer Bank
+                        </label>
+                    </div>
+
+                    <div class="form">
+                        <span id="harga">-</span>
+                    </div>
+
+                    <button type="submit">Kirim Reservasi</button>
+                </form>
+            </div>
+
+            <!-- Bagian Kanan: Gambar -->
+            <div class="right-reservasi">
+                <img src="/images/bg-login1.png" alt="Background Reservasi" class="reservasi-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js">
+    document.addEventListener("DOMContentLoaded", function() {
+        // Animasi untuk .secreservasi dan .reservasi-img
+        gsap.from(".secreservasi", {
+            opacity: 0, // Mulai dari opacity 0
+            y: 100, // Mulai dari bawah (move 100px ke bawah)
+            duration: 1, // Durasi 1 detik
+            ease: "power3.out" // Ease untuk animasi halus
+        });
+
+        gsap.from(".reservasi-img", {
+            opacity: 0, // Mulai dari opacity 0
+            x: -100, // Mulai dari kiri (move 100px ke kiri)
+            duration: 1.5, // Durasi 1.5 detik
+            delay: 0.5, // Delay sedikit setelah animasi pertama
+            ease: "power3.out" // Ease untuk animasi halus
+        });
+
+        // Animasi untuk form kiri dan kanan
+        gsap.from(".left-reservasi", {
+            opacity: 0, // Mulai dari opacity 0
+            x: -150, // Mulai dari kiri
+            duration: 1, // Durasi 1 detik
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        gsap.from(".right-reservasi", {
+            opacity: 0, // Mulai dari opacity 0
+            x: 150, // Mulai dari kanan
+            duration: 1, // Durasi 1 detik
+            ease: "power3.out",
+            delay: 0.5
+        });
+    });
+</script>
+
+
+<script>
+    // Ambil elemen dropdown dan elemen untuk menampilkan harga
+    const layananSelect = document.getElementById('nama_layanan');
+    const hargaDisplay = document.getElementById('harga');
+  
+    // Tambahkan event listener untuk mendeteksi perubahan pada dropdown
+    layananSelect.addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex]; // Opsi yang dipilih
+        const harga = selectedOption.getAttribute('data-harga'); // Ambil atribut data-harga
+
+        // Tampilkan harga atau tanda default jika belum dipilih
+        hargaDisplay.textContent = harga ? `Rp ${harga}` : '-';
+    });
+</script>

@@ -1,0 +1,112 @@
+<section class="section-pembayaran">
+  <div class="bg-overlay"></div>
+  <div class="content-payment">
+    <div class="informasi-payment"> 
+      <div id="countdown-timer">Waktu tersisa: 10:00</div>
+      <hr class="separator">
+      <p id="rekening-number">Nomor Rekening: 123-456-7890</p>      
+      <label for="bank-select" style="color: #202020; font-size: 16px;">Pilih Bank</label>
+      <select id="bank-select" name="bank" required>
+        <option value="BNI">BNI (Bank Negara Indonesia)</option>
+        <option value="BRI">BRI (Bank Rakyat Indonesia)</option>
+        <option value="BCA">BCA (Bank Central Asia)</option>
+        <option value="Dana">Dana</option>
+      </select>
+
+      <p style="color: #202020; font-size: 8px; margin-top: 8px; font-weight: 100;">
+        Pembayaran akan segera diproses setelah dana diterima di rekening kami.
+      </p>
+      
+    </div>
+
+    <div class="upload-payment">
+      <form action="/submit-payment" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="reservasiId" value="<%= id_reservasi %>">
+      <input type="hidden" name="paymentEndTime" id="paymentEndTime">
+      
+      <div class="upload-container" id="upload-container">
+        <i class="bi bi-cloud-arrow-up-fill large-icon" style="color: black; font-size: 50px;"></i>        
+        <p id="upload-text">Drag &amp; Drop your files here</p>
+        <p class="or">OR</p>
+        <button id="browse-button">Browse Files</button>
+        <input type="file" name="bukti_pembayaran" id="file-input" style="display:none" required>
+      </div>
+      
+      <div>
+        <button type="submit">Konfirmasi</button>
+      </div>
+    </form>
+    </div>
+    
+  </div>
+</section>
+
+
+
+<script>
+  const rekeningNumber = document.getElementById("rekening-number");
+  const bankSelect = document.getElementById("bank-select");
+
+  // Set initial rekening number for BNI
+  const bankNumbers = {
+    "BNI": "123-456-7890",
+    "BRI": "987-654-3210",
+    "BCA": "111-222-3333",
+    "Dana": "444-555-6666"
+  };
+
+  // Function to update rekening number based on selected bank
+  bankSelect.addEventListener("change", function() {
+    const selectedBank = bankSelect.value;
+    rekeningNumber.innerHTML = `Nomor Rekening: ${bankNumbers[selectedBank]}`;
+  });
+
+  // Optional: Set initial bank value
+  rekeningNumber.innerHTML = `Nomor Rekening: ${bankNumbers[bankSelect.value]}`;
+
+
+
+  const uploadContainer = document.getElementById("upload-container");
+  const fileInput = document.getElementById("file-input");
+  const browseButton = document.getElementById("browse-button");
+  const uploadText = document.getElementById("upload-text");
+
+  // When the "Browse Files" button is clicked, open the file input
+  browseButton.addEventListener("click", function() {
+    fileInput.click();
+  });
+
+  // Handle file drop functionality
+  uploadContainer.addEventListener("dragover", function(e) {
+    e.preventDefault();
+    uploadContainer.style.border = "2px dashed #ccc"; // Visual feedback for dragover
+  });
+
+  uploadContainer.addEventListener("dragleave", function() {
+    uploadContainer.style.border = "none"; // Remove visual feedback when drag leaves
+  });
+
+  uploadContainer.addEventListener("drop", function(e) {
+    e.preventDefault();
+    uploadContainer.style.border = "none"; // Remove visual feedback
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      fileInput.files = files; // Set the dropped file to the input
+      updateUI(files[0].name); // Update the UI with the uploaded file name
+    }
+  });
+
+  // Update UI to show file name after upload
+  fileInput.addEventListener("change", function() {
+    if (fileInput.files.length > 0) {
+      updateUI(fileInput.files[0].name);
+    }
+  });
+
+  // Function to update the UI after file upload
+  function updateUI(fileName) {
+    uploadText.innerHTML = `File uploaded: ${fileName}`;  // Change text to show file name
+    uploadContainer.style.border = "2px solid #4caf50";  // Change border color to indicate success
+    browseButton.style.display = "none";  // Hide the browse button
+  }
+</script>
